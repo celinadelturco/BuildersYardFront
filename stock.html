@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head> 
+<body id="bodyStock">
+    <h1>Search stock</h1>
+    <form id="formStock" onsubmit="event.preventDefault(); searchStock();">
+        <input type="text" id="stockInput" placeholder="Search">
+        <button type="submit" id="stockButton">Search</button>
+    </form>
+
+
+    <h1>Add product</h1>
+    <input type="text" id="productName" placeholder="Name" required>
+    <input type="text" id="productDescription" placeholder="Description" required>
+    <input type="number" id="productPrice" placeholder="Price" required>
+    <button type="submit" id="btnAddProduct" onclick="addProduct()">Add</button>
+
+<script>
+        let newProduct= [];
+
+    function addProduct(){
+        
+        var name = document.getElementById("productName").value;
+        var description = document.getElementById("productDescription").value;
+        var price = document.getElementById("productPrice").value;
+        
+        console.log(name, description, price);
+
+        newProduct.push({"name": name, "description": description, "price": price});
+
+        localStorage.setItem("productos", JSON.stringify(newProduct));
+newProduct= JSON.parse(localStorage.getItem("productos"));
+console.log(newProduct);
+    }
+
+</script>
+
+</html>
